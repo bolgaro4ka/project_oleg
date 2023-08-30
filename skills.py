@@ -1,4 +1,3 @@
-import os
 import webbrowser
 import sys
 import subprocess
@@ -9,7 +8,13 @@ import pygame
 import random
 from pygame.locals import *
 import game
+import decryption
+import encryption
+import colorama
+import buba
+import os
 
+user=str(str("[ ")+str(os.getlogin())+str(" ]"))
 def browser():
 	'''Открывает браузер заданнный по уполчанию в системе с url указанным здесь'''
 
@@ -18,12 +23,21 @@ def browser():
 def github():
     webbrowser.open("https://github.com/", new=2)
    
+def translate():
+    webbrowser.open("https://translate.google.com/", new=2)
+    
+def encry():
+    encryption.kisimisi()
+    
+def decry():
+    decryption.hagivagi()
+
 def game1():
 	'''Нужно разместить путь к exe файлу любого вашего приложения'''
 	try:
 		subprocess.Popen("C:\WINDOWS\system32\mspaint.exe")
 	except:
-		voice.speaker('Путь к файлу не найден, проверьте, правильный ли он')
+		voice.speaker(' Путь к файлу не найден, проверьте, правильный ли он')
 
 def calc():
     voice.speaker(" Введите ваше арифметическое действие ниже")
@@ -48,7 +62,7 @@ def weather():
 		voice.speaker(f" На улице {w['weather'][0]['description']} {round(w['main']['temp'])} градусов")
 		
 	except:
-		voice.speaker('Произошла ошибка при попытке запроса к ресурсу API, проверь код')
+		voice.speaker(' Произошла ошибка при попытке запроса к ресурсу API, проверь код')
 
 def exp():
     os.startfile(r"links\exp.lnk")
@@ -95,7 +109,7 @@ def systemo():
 def reco():
     voice.speaker(" Введите вашу фразу ниже, а я озвучу! (Для выхода напишите exit или выход)")
     while True:
-        recop = input(">>> ")
+        recop = input(Fore.BLUE+str(user) + str(" "))
         if recop == "exit" or recop == "Exit" or recop == "Выход" or recop == "выход":
             break
         voice.speaker(str(" ")+str(recop))
@@ -114,3 +128,15 @@ def random_money():
         
 def clear_o():
 	os.system('CLS')
+    
+def qrcode_build_oleg():
+    voice.speaker(" Введите что надо защифровать в qrcode:")
+    text_qrcode_build_oleg=input(Fore.BLUE+str(user) + str(" "))
+    os.system(r'python -m qrtetris -d '+'"'+str(text_qrcode_build_oleg)+'"'+' -s -p @res/prog.txt -o output.gif')
+    
+def bubaa():
+    buba.buba_prog()
+    
+    
+    
+    

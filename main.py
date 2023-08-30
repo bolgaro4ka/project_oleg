@@ -4,6 +4,7 @@ import sounddevice as sd
 import vosk
 import os
 from colorama import *
+import settings
 
 import json
 import queue
@@ -13,6 +14,7 @@ from skills import *
 import voice
 
 
+version="1.4.1"
 q = queue.Queue()
 
 model = vosk.Model('model_small')       #голосовую модель vosk нужно поместить в папку с файлами проекта
@@ -64,6 +66,10 @@ def recognize(data, vectorizer, clf):
 
 def main():
     os.system('CLS')
+    if settings.oleg_start_screen == 1:
+        os.system(r'python -m qrtetris -d "Проект на GitHub: https://clck.ru/33b8FL" -s -p @res/prog.txt -o qrtetris/output.gif')
+        print(str(f"Голосовой помощник Олег. ")+str("Автор: bolgaro4ka (Никита Федосов).")+str(f" Версия {version}"))
+        print(str("Готов к работе!\n"))
     '''
     Обучаем матрицу ИИ
     и постоянно слушаем микрофон
